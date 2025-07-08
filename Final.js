@@ -40,7 +40,7 @@ function setup() {
   }
   //Video
 
-  video = createVideo("Dante.MP4");
+  video = createVideo("Dante2.mov");
   video.size(640, 360);
   video.position((windowWidth - 1300) / 2, (windowHeight - 600) / 2 + 40);
   video.hide();
@@ -48,7 +48,7 @@ function setup() {
   video.elt.setAttribute("controls", "");
 
   //video2
-  video2 = createVideo("Gojo.MP4");
+  video2 = createVideo("Gojo2.mov");
   video2.size(640, 360);
   video2.position((windowWidth - 10) / 2, (windowHeight - 600) / 2 + 40);
   video2.hide();
@@ -56,7 +56,7 @@ function setup() {
   video2.elt.setAttribute("controls", "");
 
   //video3
-  video3 = createVideo("Okarun.MOV");
+  video3 = createVideo("Okarun2.mov");
   video3.size(640, 360);
   video3.position((windowWidth - 130) / 3, (windowHeight - -20) / 2 + 60);
   video3.hide();
