@@ -104,8 +104,21 @@ function draw() {
     video2.hide();
     video3.hide();
     text("About Me", width / 2, height / 2 - 40);
-    text("I'm Acosta Jared.", width / 2, height / 2);
-    text("Editor, storyteller.", width / 2, height / 2 + 30);
+    text("I'm Acosta Jared. My name is Jared Acosta. My passion is editing and taking photos.", width / 2, height / 2);
+    text("How did I know this was something I loved? Over time, when I was younger—like any normal kid—I liked playing video games.", width / 2, height / 2 + 30);
+    text("But one day I saw videos and editors working on their favorite games, anime, or movies, and I loved how they did it. That was around 2018.", width / 2, height / 2 + 60);
+    text("So I downloaded a basic editing app. As time went on, I started making really good videos, and that’s when I felt it was my passion.", width / 2, height / 2 + 90);
+    text("I gained more than 20k followers. Sadly, I lost the account and had to start over.", width / 2, height / 2 + 120);
+    text("Even after that, I grew a good following again, and now I use even better software. I also discovered my love for photography.", width / 2, height / 2 + 150);
+    text("Every time I went somewhere—or even to my backyard—I would take pictures. Eventually, I took photojournalism and photo editing classes to improve my skills. ", width / 2, height / 2 + 180);
+    text("Now, I plan to share my photo edits on TikTok too. You can find me on TikTok: @mystic_vx. ", width / 2, height / 2 + 210);
+    text("Thanks for reading! Remember, anything is possible—with time, you’ll achieve what you love. :) ", width / 2, height / 2 + 240);
+
+
+
+
+
+
 
     for (let brush of brushes) {
       brush.update();
