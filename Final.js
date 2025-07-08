@@ -16,7 +16,7 @@ function preload() {
   images.push(loadImage("IMG_0083.jpg"));
   images.push(loadImage("IMG_0158.jpg"));
   images.push(loadImage("IMG_0062.JPG"));
-  images.push(loadImage("IMG_0085.JPG"));
+  images.push(loadImage("IMG_0085.jpg"));
   images.push(loadImage("IMG_0175.JPG"));
   images.push(loadImage("IMG_0122.JPG"));
   images.push(loadImage("IMG_2558.jpg"));
