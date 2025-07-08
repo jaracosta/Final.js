@@ -8,13 +8,22 @@ let brushes = [];
 let bg;
 let slideIndex = 0;
 let slideTimer = 0;
-let video;
+let video, video2, video3
 
 function preload() {
-  bg = loadImage("Matrix.jpg");
-  images.push(loadImage("IMG_0455.jpg"));
-  images.push(loadImage("IMG_0456.jpg"));
-  images.push(loadImage("IMG_0459.jpg"));
+  bg = loadImage("Background.jpg");
+  images.push(loadImage("IMG_0082.jpg"));
+  images.push(loadImage("IMG_0083.jpg"));
+  images.push(loadImage("IMG_0158.jpg"));
+  images.push(loadImage("IMG_0062.JPG"));
+  images.push(loadImage("IMG_0085.JPG"));
+  images.push(loadImage("IMG_0175.JPG"));
+  images.push(loadImage("IMG_0122.JPG"));
+  images.push(loadImage("IMG_2558.jpg"));
+  images.push(loadImage("IMG_2560.jpg"));
+  images.push(loadImage("IMG_2565.jpg"));
+  images.push(loadImage("IMG_2561.jpg"));
+  images.push(loadImage("IMG_0356.JPG"));
 }
 
 function setup() {
@@ -29,13 +38,30 @@ function setup() {
   for (let i = 0; i < 50; i++) {
     brushes.push(new Brush(random(width), random(height)));
   }
+  //Video
 
-  video = createVideo("Tanjiro Glitch-Edit.MP4");
+  video = createVideo("Dante.MP4");
   video.size(640, 360);
-  video.position((windowWidth - 640) / 2, (windowHeight - 360) / 2 + 40);
+  video.position((windowWidth - 1300) / 2, (windowHeight - 600) / 2 + 40);
   video.hide();
   video.elt.setAttribute("playsinline", "");
   video.elt.setAttribute("controls", "");
+
+  //video2
+  video2 = createVideo("Gojo.MP4");
+  video2.size(640, 360);
+  video2.position((windowWidth - 10) / 2, (windowHeight - 600) / 2 + 40);
+  video2.hide();
+  video2.elt.setAttribute("playsinline", "");
+  video2.elt.setAttribute("controls", "");
+
+  //video3
+  video3 = createVideo("Okarun.MOV");
+  video3.size(640, 360);
+  video3.position((windowWidth - 130) / 3, (windowHeight - -20) / 2 + 60);
+  video3.hide();
+  video3.elt.setAttribute("playsinline", "");
+  video3.elt.setAttribute("controls", "");
 }
 
 function draw() {
@@ -45,9 +71,11 @@ function draw() {
 
   if (currentSection === "photos") {
     video.hide();
-    text("Photo Gallery", width / 2, 80);
-    let imgW = 400;
-    let imgH = 260;
+    video2.hide();
+    video3.hide();
+    text("My Work As An Photojournalism Editor", width / 2, 80);
+    let imgW = 920;
+    let imgH = 640;
     let x = width / 2 - imgW / 2;
     let y = height / 2 - imgH / 2 + 20;
 
@@ -67,10 +95,14 @@ function draw() {
     image(images[slideIndex], 0, 0, imgW, imgH);
     pop();
   } else if (currentSection === "videos") {
-    text("Video Edit", width / 2, 80);
+    text("My Work As An Editor", width / 2, 80);
     video.show();
+    video2.show();
+    video3.show();
   } else if (currentSection === "about") {
     video.hide();
+    video2.hide();
+    video3.hide();
     text("About Me", width / 2, height / 2 - 40);
     text("I'm Acosta Jared.", width / 2, height / 2);
     text("Editor, storyteller.", width / 2, height / 2 + 30);
@@ -81,6 +113,8 @@ function draw() {
     }
   } else {
     video.hide();
+    video2.hide();
+    video3.hide();
   }
 }
 
@@ -95,6 +129,8 @@ function createButtons() {
       currentSection = sec;
       fadeAlpha = 0;
       if (sec !== "videos") video.hide();
+      if (sec !== "videos") video2.hide();
+      if (sec !== "videos") video3.hide();
     });
     btn.style("padding", "10px 20px");
     btn.style("font-size", "16px");
@@ -107,7 +143,7 @@ function createButtons() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-  video.position((windowWidth - 640) / 2, (windowHeight - 360) / 2 + 40);
+  //video.position((windowWidth - 640) / 2, (windowHeight - 360) / 2 + 40);
 }
 
 class Brush {
