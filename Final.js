@@ -9,6 +9,23 @@ let video, video2, video3;
 let brushes = [];
 let tiktokHovered = false;
 
+
+let photoDescriptions = [
+  "Father and Daughter: This photo was taken during a game of hide-and-seek between the father and his daughter..",
+  "Natural: an enduring human made structure that has long been part of the park, spanning a beautiful and unique lagoon",
+  "Julia Traweck: She visits the park five times a week to walk her dog, named Backer.",
+  "Golf Course: The photo represents the beautiful and symbolic golf course of Audubon Park.",
+  "Lagoon Park: a lagoon covered with surface vegetation, except in the center where the water is clear and only a few bubbles rise.",
+  "Gumbel Fountain: dedicated to Sophie and Simon Gumbel, featuring bronze sculptures created by Austrian-born sculptor Isidore Konti.",
+  "Cecile W: it was dedicated on November 20, 1996, donated by Cecile’s devoted family to honor her Crepe Myrtle Grove.",
+  "Monument: Taken in the city park, at the evening, edited by jared, on Litghroom, showing a beautiful view, with great coloring.",
+  "The Afternoon:Taken in the city park, showing the grass and the beautiful sun.",
+  "Beautiful couple: It shows a happy couple on the bridge in the afternoon, on the City Park.",
+  "A beautiful view: A prefect perspective with the reflection onf the sun in the water, this was taken on the City Park.",
+  "Karma: This image was taken in the City Park museum, showing symbolizing the cyclical nature of karma and interconnectedness."
+];
+
+
 function preload() {
   bg = loadImage("Background.jpg");
 
@@ -81,7 +98,7 @@ function draw() {
 
   if (currentSection === "photos") {
     video.hide(); video2.hide(); video3.hide();
-    text("My Work As A Photojournalism Editor", width / 2, 80);
+    text("My Work As A Photojournalism Editor", width / 2, 30);
     let imgW = 920;
     let imgH = 640;
     let x = width / 2 - imgW / 2;
@@ -103,8 +120,24 @@ function draw() {
     image(photoImages[slideIndex], 0, 0, imgW, imgH);
     pop();
 
+  // Texts above the image
+  fill(255);
+  stroke(0);
+  strokeWeight(2);
+  textSize(24);
+  text(photoDescriptions[slideIndex], width / 2, y - 30);
+
+  // Digital Firm brilliant of my name
+  noStroke();
+  fill(255, 255, 0);
+  textSize(20);
+  drawingContext.shadowColor = color(255, 255, 0);
+  drawingContext.shadowBlur = 15;
+  text("Jared Acosta", width - 120, height - 40);
+
+
   } else if (currentSection === "videos") {
-    text("My Work As An Editor", width / 2, 80);
+    text("My Work As An Editor", width / 2, 30);
     video.show(); video2.show(); video3.show();
 
   } else if (currentSection === "about") {
@@ -263,7 +296,7 @@ class Brush {
 
 window.addEventListener("DOMContentLoaded", () => {
 
-// Crear botón en el menú para Animations
+// Create button on the menú for Animations
 const menu = document.querySelector("#menu") || document.createElement("nav");
 if (!document.querySelector("#menu")) {
   menu.id = "menu";
@@ -304,7 +337,7 @@ document.body.style.backgroundColor = "black"; // prevents the white thing
 });
 menu.appendChild(animBtn);
 
-// Crear sección ANIMATIONS justo después de Drawings
+// Create ANIMATIONS section right after Drawings
 const drawingsSection = document.querySelector("#drawings") || document.querySelector("#Drawing");
 const animationsSection = document.createElement("section");
 animationsSection.style.display = "none";
@@ -375,7 +408,7 @@ document.body.style.backgroundColor = "black"; // prevents the white thing
 
 });
 
-// Ocultar sección animations al hacer clic en otros botones
+// Hide section animations when we clic on the others buttons
 document.querySelectorAll("#menu button").forEach(btn => {
   if (btn.innerText !== "Animations") {
     btn.addEventListener("click", () => {
@@ -394,3 +427,11 @@ document.body.style.padding = "0";
 document.body.style.backgroundColor = "black"; // prevents the white thing
 
 });
+
+
+function mousePressed() {
+  if (currentSection === "photos") {
+    slideIndex = (slideIndex + 1) % photoImages.length;
+    slideTimer = 0;
+  }
+}
