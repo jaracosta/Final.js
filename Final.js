@@ -213,14 +213,24 @@ function createButtons() {
       currentSection = sec;
       fadeAlpha = 0;
       video.hide(); video2.hide(); video3.hide();
-    });
+    
+document.body.style.margin = "0";
+document.body.style.padding = "0";
+document.body.style.backgroundColor = "black"; // prevents the white thing
+
+});
     btn.style("padding", "10px 20px");
     btn.style("font-size", "16px");
     btn.style("background", sec === "Drawings" ? "#ffd600" : "#00adb5");
     btn.style("color", sec === "Drawings" ? "black" : "white");
     btn.style("border", "none");
     btn.style("border-radius", "8px");
-  });
+  
+document.body.style.margin = "0";
+document.body.style.padding = "0";
+document.body.style.backgroundColor = "black"; // prevents the white thing
+
+});
 }
 
 function windowResized() {
@@ -249,3 +259,138 @@ class Brush {
     ellipse(this.x, this.y, this.r * 2);
   }
 }
+
+
+window.addEventListener("DOMContentLoaded", () => {
+
+// Crear botón en el menú para Animations
+const menu = document.querySelector("#menu") || document.createElement("nav");
+if (!document.querySelector("#menu")) {
+  menu.id = "menu";
+  menu.style.display = "flex";
+  menu.style.justifyContent = "center"; // horizontal centering
+  menu.style.gap = "20px";
+  menu.style.margin = "20px";
+menu.style.background = "black";
+menu.style.padding = "10px 0";
+  document.body.insertBefore(menu, document.body.firstChild);
+}
+
+const animBtn = document.createElement("button");
+animBtn.innerText = "Animations";
+animBtn.style.padding = "10px 15px";
+animBtn.style.borderRadius = "10px";
+animBtn.style.border = "none";
+animBtn.style.cursor = "pointer";
+animBtn.style.background = "#222";
+animBtn.style.color = "white";
+animBtn.style.boxShadow = "0 0 10px white";
+animBtn.addEventListener("click", () => {
+  const animSection = document.querySelector("#animations");
+  if (animSection) {
+    animSection.style.display = "block";
+    animSection.scrollIntoView({ behavior: "smooth"});
+document.body.style.margin = "0";
+document.body.style.padding = "0";
+document.body.style.backgroundColor = "black"; // prevents the white thing
+
+
+  }
+
+document.body.style.margin = "0";
+document.body.style.padding = "0";
+document.body.style.backgroundColor = "black"; // prevents the white thing
+
+});
+menu.appendChild(animBtn);
+
+// Crear sección ANIMATIONS justo después de Drawings
+const drawingsSection = document.querySelector("#drawings") || document.querySelector("#Drawing");
+const animationsSection = document.createElement("section");
+animationsSection.style.display = "none";
+animationsSection.id = "animations";
+animationsSection.style.backgroundImage = "url('Fondo1.jpg')";
+animationsSection.style.backgroundSize = "cover";
+animationsSection.style.backgroundPosition = "center";
+animationsSection.style.backgroundRepeat = "no-repeat";
+animationsSection.style.color = "white";
+animationsSection.style.padding = "50px 20px";
+
+const title = document.createElement("h2");
+title.innerText = "My work as an Anime Animator";
+title.style.textAlign = "center";
+title.style.fontSize = "2em";
+title.style.marginBottom = "30px";
+
+const videoContainer = document.createElement("div");
+videoContainer.style.display = "flex";
+videoContainer.style.justifyContent = "center";
+videoContainer.style.flexWrap = "wrap";
+videoContainer.style.gap = "30px";
+
+const videos = ["Animation1.mov", "Animation2.mov"];
+videos.forEach((src) => {
+  const video = document.createElement("video");
+  video.src = src;
+  video.controls = true;
+  video.style.border = "4px solid white";
+  video.style.boxShadow = "0 0 20px white";
+  video.style.width = "300px";
+  video.style.borderRadius = "20px";
+  videoContainer.appendChild(video);
+
+document.body.style.margin = "0";
+document.body.style.padding = "0";
+document.body.style.backgroundColor = "black"; // prevents the white thing
+
+});
+
+animationsSection.appendChild(title);
+
+const dividerLine = document.createElement("div");
+dividerLine.style.height = "4px";
+dividerLine.style.background = "linear-gradient(to right, yellow, white, yellow)";
+dividerLine.style.margin = "0";
+animationsSection.appendChild(dividerLine);
+
+animationsSection.appendChild(videoContainer);
+
+if (drawingsSection && drawingsSection.parentNode) {
+  
+const dividerLine = document.createElement("div");
+dividerLine.style.height = "4px";
+dividerLine.style.background = "linear-gradient(to right, yellow, white, yellow)";
+dividerLine.style.margin = "0";
+
+drawingsSection.parentNode.insertBefore(dividerLine, drawingsSection.nextSibling);
+drawingsSection.parentNode.insertBefore(animationsSection, drawingsSection.nextSibling);
+} else {
+  document.body.appendChild(animationsSection);
+}
+
+
+document.body.style.margin = "0";
+document.body.style.padding = "0";
+document.body.style.backgroundColor = "black"; // prevents the white thing
+
+});
+
+// Ocultar sección animations al hacer clic en otros botones
+document.querySelectorAll("#menu button").forEach(btn => {
+  if (btn.innerText !== "Animations") {
+    btn.addEventListener("click", () => {
+      const animSection = document.querySelector("#animations");
+      if (animSection) animSection.style.display = "none";
+    
+document.body.style.margin = "0";
+document.body.style.padding = "0";
+document.body.style.backgroundColor = "black"; // prevents the white thing
+
+});
+  }
+
+document.body.style.margin = "0";
+document.body.style.padding = "0";
+document.body.style.backgroundColor = "black"; // prevents the white thing
+
+});
