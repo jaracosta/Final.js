@@ -1,3 +1,4 @@
+let bgMusic;
 // Global variables for managing assets and state
 let photoImages = [];
 let drawingImages = [];
@@ -43,6 +44,7 @@ const photoDescriptions = [
  * This ensures all media is available when the sketch starts.
  */
 function preload() {
+  bgMusic = loadSound('FunkUnivers.mp3');
   bgImage = loadImage("Background.jpg"); // Load background image
 
   // List of photo files to load
@@ -75,6 +77,24 @@ function preload() {
  * Called once after preload.
  */
 function setup() {
+const muteButton = createButton("🔈 Music: On");
+  muteButton.position(20, height - 40);
+  muteButton.style("font-size", "14px");
+  muteButton.style("background", "#111");
+  muteButton.style("color", "white");
+  muteButton.style("border", "1px solid yellow");
+  muteButton.style("padding", "6px 12px");
+  muteButton.mousePressed(() => {
+    if (bgMusic.isPlaying()) {
+      bgMusic.stop();
+      muteButton.html("🔇 Music: Off");
+    } else {
+      bgMusic.loop();
+      muteButton.html("🔈 Music: On");
+    }
+  });
+  bgMusic.setVolume(0.2);
+  bgMusic.loop();
   createCanvas(windowWidth, windowHeight); // Create a canvas that fills the window
   textAlign(CENTER, CENTER); // Set default text alignment
   noStroke(); // Disable drawing outlines for shapes
@@ -98,6 +118,7 @@ function setup() {
  * Called repeatedly (typically 60 times per second).
  */
 function draw() {
+  monitorVideoPlayback();
   updateAnimations(); // Update animation states (fades, transitions)
   renderCurrentSection(); // Draw content based on the current section
 }
@@ -219,7 +240,9 @@ function renderAnimations() {
   textSize(18);
   drawingContext.shadowColor = 'rgba(0, 0, 0, 0.8)';
   drawingContext.shadowBlur = 10;
-  text("Professional anime character animations created with advanced editing techniques", width / 2, height / 2 + 300);
+  text("It took me at least 10 hours to do this, because I had to cut out manga images and use motion effects", width / 2, height / 2 + 190);
+  text(" but with time, patience, and experience, it's possible.", width / 2, height / 2 + 210);
+  text(" I sometimes draw most of my animations and then cut them out when I take a photo, and then animate them.", width / 2, height / 2 + 230);
   pop();
 }
 
@@ -934,7 +957,7 @@ function keyPressed() {
 }
 
 
-// -------------------- ENHANCEMENTS ADDED BELOW --------------------
+// -------------------- SOME DETAILS --------------------
 
 // Matrix-style falling code background
 let matrixSymbols = [];
@@ -1067,4 +1090,17 @@ setup = (function (originalSetup) {
     repositionVideosImproved();
   }
 })(setup);
+
+
+
+function monitorVideoPlayback() {
+    let vid = videos[key];
+    if (vid && vid.elt && !vid.elt.paused) {
+      if (!bgMusic.isPaused()) {
+        bgMusic.pause();
+      }
+    } else if (vid && vid.elt && vid.elt.paused && !bgMusic.isPlaying()) {
+      bgMusic.loop();
+    }
+  }
 
