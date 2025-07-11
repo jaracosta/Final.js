@@ -251,7 +251,7 @@ function renderAnimations() {
  * This function ensures they are only created once and then toggled.
  */
 function showAnimationVideos() {
-  // Create animation1 video if it doesn't exist
+  // Create animation1 video 
   if (!videos.animation1) {
     videos.animation1 = createVideo("Animation1.mov");
     videos.animation1.size(400, 225);
@@ -267,7 +267,7 @@ function showAnimationVideos() {
     videos.animation1.elt.style.transition = "all 0.3s ease"; // Smooth CSS transitions
   }
 
-  // Create animation2 video if it doesn't exist
+  // Create animation2 video 
   if (!videos.animation2) {
     videos.animation2 = createVideo("Animation2.mov");
     videos.animation2.size(400, 225);
